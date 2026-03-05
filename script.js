@@ -1,0 +1,175 @@
+ /* 283. Move Zeroes */
+/** Input: nums = [0,1,0,3,12] //
+ 
+ // right scans the array from left to right 
+ // left marks the position where the next non-zero should be placed
+Output: [1,3,12,0,0] */
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+
+const nums = [0, 1, 0, 3, 12];
+
+var moveZeroes = function (nums) {
+  let left = 0;
+
+  for (let right = 0; right < nums.length; right++) {
+    if (nums[right] !== 0) {
+      [nums[right], nums[left]] = [nums[left], nums[right]];
+      left++;
+    }
+  }
+
+  return nums;
+};
+
+console.log(moveZeroes(nums));
+
+/** 350 Intersection of Two Arrays II */
+//nums1 = [1,2,2,1], nums2 = [2,2] // res  [2,2]
+nums1 = [4,9,5], nums2 = [9,4,9,8,4]  // res [9,4]
+
+var intersect = function(nums1, nums2) {
+    seen = new Map();
+    res = [];
+  //Map is built on smaller array --> ptimize memory 
+    for(const n of nums1){
+        seen.set(n, (seen.get(n) || 0 ) + 1)
+    }
+   // console.log("first rount:", seen);
+
+    for (const x of nums2){
+        if ( seen.has(x) && seen.get(x) > 0){
+            res.push(x);
+            seen.set(x, (seen.get(x) -1))
+        }     
+    }
+    return res
+};
+
+//console.log(intersect(nums1, nums2));
+/** 349. Intersection of Two Arrays */
+ /**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+nums1 = [1,2,2,1], nums2 = [2,2]  //res [2]
+//nums1 = [4,9,5], nums2 = [9,4,9,8,4]  // res [9,4]
+var intersection = function(nums1, nums2) {
+   
+    res = [];
+   /* seen = new Map();
+
+    for(const n of nums1){
+        if(!seen.has(n))
+        seen.set(n)
+    }
+        */
+    seen = new Set(nums1);
+
+    for(const x of nums2){
+        if ( seen.has(x)){
+            res.push(x);
+           seen.delete(x);
+        }
+    }
+   return res;
+};
+ 
+//console.log(intersection(nums1, nums2));
+ 
+ 
+ /** 242 Valid Anagram
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+s = "anagram", t = "nagaram"
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+
+   const seen = new Map();
+   // s
+    for (const ch of s){
+        seen.set(ch, (seen.get(ch) || 0) + 1);
+    }
+    //t
+    for (const ch of t){
+        if(!seen.has(ch))return false;
+
+        seen.set(ch, seen.get(ch)-1)
+        if (seen.get(ch) < 0) return false;
+    }
+ return true;
+};
+
+//console.log(isAnagram(s,t));
+ 
+ 
+ 
+ /**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+/* 
+Input: nums = [1,2,3,1]
+Output: true
+*/
+
+var containsDuplicate = function(nums) {
+    seen = new Map();
+
+    for(let i = 0; i < nums.length; i++){
+
+        if(seen.has(nums[i]))
+            return true;
+        else 
+        seen.set(nums[i]);     
+    }
+    return false;
+};
+ numsA = [1,2,3,1];
+//console.log(containsDuplicate(numsA));
+ numsB = new Set(numsA); 
+
+var containsDuplicate = function(nums) {
+    return new Set(nums).size !== nums.length;
+};
+
+//console.log(containsDuplicate([1,2,3,2])); 
+ 
+ 
+ 
+ /** Two Sums  - HashMap */
+ /**
+**Input:** nums = [2,7,11,15], target = 9
+**Output:** [0,1]
+**Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1].
+  */
+ /**
+  * * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+//nums = [ 2,7,11,15], target = 9
+
+var twoSum = function(nums, target) {
+    const seen = new Map(); // key-value pairs  (2 -> 0 ; 7-> 1; 11 -> 2; 15->3)
+
+    for (let i = 0; i < nums.length ; i++){
+        const need = target - nums[i];
+
+        if (seen.has(need))     
+            return [i, seen.get(need)]
+
+        seen.set(nums[i], i) 
+    }
+    
+};
+
+//console.log(twoSum(nums, target));
+
+
+
