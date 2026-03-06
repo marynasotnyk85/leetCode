@@ -1,3 +1,30 @@
+ /** 53 Maximum Subarray
+  * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+  *   */
+ /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+    res = nums[0];
+    total = 0;
+
+    for ( const n of nums){
+        if (total < 0) total = 0;
+
+        total += n;
+        res = Math.max(res,total)
+    }
+    return res;
+
+};
+
+
+console.log(maxSubArray( [-2,1,-3,4,-1,2,1,-5,4]))
+
+ 
+ 
  /* 283. Move Zeroes */
 /** Input: nums = [0,1,0,3,12] //
  
@@ -9,7 +36,8 @@ Output: [1,3,12,0,0] */
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 
-const nums = [0, 1, 0, 3, 12];
+//const nums = [0, 1, 0, 3, 12];
+//const nums = [2,5,9,0,0,6];
 
 var moveZeroes = function (nums) {
   let left = 0;
@@ -24,7 +52,7 @@ var moveZeroes = function (nums) {
   return nums;
 };
 
-console.log(moveZeroes(nums));
+//console.log(moveZeroes(nums));
 
 /** 350 Intersection of Two Arrays II */
 //nums1 = [1,2,2,1], nums2 = [2,2] // res  [2,2]
