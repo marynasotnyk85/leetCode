@@ -1,6 +1,36 @@
+ /** 118. Pascal's Triangle
+ Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+*/
+ /**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+    const result = [];
+
+    for (let row = 0; row < numRows; row ++){
+        currentRow = new Array(row+1).fill(1);
+
+        for (let col = 1; col < row; col++){
+            currentRow[col]= result[row-1][col-1] + result[row-1][col]
+        }
+        /**for (let i = 1; i < row; i++) {
+            currentRow[i] = result[row-1][i-1] + result[row-1][i];
+        } */
+
+        result.push(currentRow);
+    }
+
+    return result;
+};
+ 
+console.log(generate(5));
  /** 53 Maximum Subarray
   * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
+At every position in the array we ask one question:
+Is it better to:  1)  start a new subarray here  or 2)  extend the previous subarray
   *   */
  /**
  * @param {number[]} nums
@@ -20,8 +50,20 @@ var maxSubArray = function(nums) {
 
 };
 
+function maxSubArray2(nums) {
+  let current = nums[0];
+  let best = nums[0];
 
-console.log(maxSubArray( [-2,1,-3,4,-1,2,1,-5,4]))
+  for (let i = 1; i < nums.length; i++) {
+    current = Math.max(nums[i], current + nums[i]);
+    best = Math.max(best, current);
+  }
+
+  return best;
+}
+
+
+//console.log(maxSubArray2( [-2,1,-3,4,-1,2,1,-5,4]))
 
  
  
