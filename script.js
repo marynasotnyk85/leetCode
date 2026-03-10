@@ -1,4 +1,43 @@
- /** 118. Pascal's Triangle
+/** 119. Pascal's Triangle II  
+ * Input: rowIndex = 3
+ Output: [1,3,3,1]
+*/
+
+
+var getRow = function(rowIndex) {
+    const result = [];
+
+for (let row = 0; row <= rowIndex; row ++) {
+   const currentRow = new Array(row +1).fill(1);
+
+    for (let i = 1; i<row; i++){
+     currentRow[i]= result[row-1][i-1] + result[row-1][i]
+
+    }
+
+    result.push(currentRow);
+}
+
+    return result[rowIndex];
+   
+};
+//console.log(getRow(4));
+
+var getRow2 = function(rowIndex) {
+    let row = [1];
+
+    for (let i = 1; i <= rowIndex; i++) {
+        row.push(1);
+
+        for (let j = i - 1; j > 0; j--) {
+            row[j] = row[j] + row[j - 1];
+        }
+    }
+
+    return row;
+};
+//console.log(getRows2(4));
+/** 118. Pascal's Triangle
  Input: numRows = 5
 Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
 */
@@ -25,7 +64,7 @@ var generate = function(numRows) {
     return result;
 };
  
-console.log(generate(5));
+//console.log(generate(5));
  /** 53 Maximum Subarray
   * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 Output: 6
