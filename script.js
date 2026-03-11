@@ -1,3 +1,56 @@
+/**  Memoizzation */
+
+const memo = {} ; //HashMap
+
+function climpStairs(n){
+    if (n in memo) return memo[n];
+
+    if (n <=2) return n;
+
+    const result = climpStairs(n-1) + climpStairs(n-2);
+    memo[n] = result;
+
+    return result;
+}
+
+/** Tabulation  */
+function climpStairs(n){
+   const ways = [];  // [0,0,0,0,0]
+   ways[1] = 1;
+   ways[2] = 2;
+
+   for( let i = 3; i <= n; i++){
+    ways[i] = ways[i-1] + ways[i-2]; 
+   }
+    return ways[n]
+}
+
+
+
+/** 121. Best Time to Buy and Sell Stock */
+/** Input: prices = [7,1,5,3,6,4]   Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Input: prices = [7,6,4,3,1]   Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0. */
+
+prices = [7,1,5,3,6,4] 
+var maxProfit = function(prices) {
+   let maxProfit = 0;
+   let minPrice  = prices[0];
+
+    for (const price of prices){
+        minPrice  = Math.min(price, bestToBuy);
+        const profit = price - minPrice;
+        maxProfit = Math.max(profit, maxProfit)
+       
+    }
+
+    return maxProfit;  
+};
+console.log(maxProfit(prices));
+
 /** 119. Pascal's Triangle II  
  * Input: rowIndex = 3
  Output: [1,3,3,1]
