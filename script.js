@@ -1,3 +1,42 @@
+/** Two Sum order arr */
+var twoSumOrdered = function(numbers, target){
+    let left = 0;
+    let right = numbers.length - 1;
+    
+    while (left < right) {
+        let total = numbers[left] + numbers[right];
+
+        if ( total === target){
+            return [left + 1, right +1];
+        }
+        else if (total > target) {
+             //sum to big -> move to left
+             right--
+        } else { 
+            //sum to small -> move to right
+            left ++
+        }  
+    }
+
+}
+
+numbers = [2, 3, 4, 8, 11]
+target = 12
+console.log(twoSumOrdered(numbers, target))
+
+var removeElement = function(nums, val) {
+    let k = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== val) {
+            nums[k] = nums[i];
+            k++;
+        }
+    }
+
+    return k;    
+};
+
 /* 26. Remove Duplicates from Sorted Array   ---> in-place */
 /** Input: nums = [0,0,1,1,1,2,2,3,3,4]
 Output: 5, nums = [0,1,2,3,4,_,_,_,_,_] */
