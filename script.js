@@ -1,3 +1,34 @@
+/** 345. Reverse Vowels of a String */
+var reverseVowels = function(s) {
+    const vowels = new Set(['a','e','i','o','u','A','E','I','O','U']);
+    const arr = s.split('');
+    let left = 0;
+    let right = arr.length -1;
+
+    while (left < right){
+        while (left < right && !vowels.has(arr[left])) left ++;
+        while (left < right && !vowels.has(arr[right])) right --;
+
+        [arr[left], arr[right]] = [arr[right], arr[left]];
+        left++;
+        right--;
+    }
+    return arr.join('');
+};
+
+s = "leetcode";
+console.log(reverseVowels(s));
+
+
+/**  what s = 'hello' as string ->  "hello".split('').reverse().join('')
+ *    let arr = s.split('');
+ *    ..... the same
+ *    return arr.join('')
+ * 
+*/
+
+
+
 /** 344 Reverse String */
 /**
  * @param {character[]} s
@@ -15,7 +46,8 @@ while (left < right){
 return s;
 };
 s = ["h","e","l","l","o"];
-console.log(reverseString(s));
+//console.log(reverseString(s));
+
 
 /** Two Sum order arr */
 var twoSumOrdered = function(numbers, target){
