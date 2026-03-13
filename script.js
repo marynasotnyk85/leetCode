@@ -1,3 +1,22 @@
+/** 344 Reverse String */
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function(s) {
+    let left = 0;
+    let right = s.length -1;
+
+while (left < right){
+     [s[left], s[right]]= [s[right],s[left]];
+     left++;
+     right--
+}
+return s;
+};
+s = ["h","e","l","l","o"];
+console.log(reverseString(s));
+
 /** Two Sum order arr */
 var twoSumOrdered = function(numbers, target){
     let left = 0;
@@ -22,7 +41,7 @@ var twoSumOrdered = function(numbers, target){
 
 numbers = [2, 3, 4, 8, 11]
 target = 12
-console.log(twoSumOrdered(numbers, target))
+//console.log(twoSumOrdered(numbers, target))
 
 var removeElement = function(nums, val) {
     let k = 0;
@@ -107,7 +126,7 @@ var maxProfit = function(prices) {
 
     return maxProfit;  
 };
-console.log(maxProfit(prices));
+//console.log(maxProfit(prices));
 
 /** 119. Pascal's Triangle II  
  * Input: rowIndex = 3
