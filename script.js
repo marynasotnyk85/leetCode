@@ -1,6 +1,29 @@
+/** 125. Valid Palindrome */
+/** Input: s = "A man, a plan, a canal: Panama"
+   Output: true
+   Explanation: "amanaplanacanalpanama" is a palindrome. */
+
 /**  219. Contains Duplicate II */
 /** Input: nums = [1,2,3,1], k = 3
     Output: true */
+
+    var isPalindrome = function(s) {
+        s = s.toLowerCase().replace(/[^a-z0-9]/g,'');
+
+        let left = 0;
+        let right = s.length -1;
+
+        while (left < right){
+            if (s[left] !== s[right]) {return false}
+            left ++;
+            right --;
+
+        }
+        return true;
+
+};
+s = "A man, a plan, a canal: Panama";
+console.log(isPalindrome(s));
 
     var containsNealyDuplicates = function(nums, k){
         const window = new Set();
