@@ -1,3 +1,37 @@
+/**  219. Contains Duplicate II */
+/** Input: nums = [1,2,3,1], k = 3
+    Output: true */
+
+    var containsNealyDuplicates = function(nums, k){
+        const window = new Set();
+
+        for (let i = 0; i < nums.length; i++){
+
+             if (window.has(nums[i]))  return true;
+
+            window.add(nums[i]);
+
+            if (window.size > k) {
+                window.delete(nums[i-k]);
+            } 
+        }
+        return false;
+    }
+
+    
+    var containsNealyDuplicates2 = function(nums, k){
+        const map = new Map();
+
+        for (let i = 0; i < nums.length; i++){
+            if (map.has(nums[i]) && (i - map.get(nums[i]) <= k))   {
+                return true;
+            }
+          map.set(nums[i], i);
+        }
+        return false;
+    }
+
+
 /** 345. Reverse Vowels of a String */
 var reverseVowels = function(s) {
     const vowels = new Set(['a','e','i','o','u','A','E','I','O','U']);
