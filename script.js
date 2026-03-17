@@ -1,3 +1,88 @@
+/** ARRAY */
+arr = [1,2,3];
+arr2 = new Array(3).fill(0); //[0,0,0]
+
+arr.push(4); //[1,2,3,4] → add to END
+arr.unshift(0) //[0,1,2,3,4] → add to START
+
+arr.pop();          // remove LAST
+arr.shift();        // remove FIRST
+
+const res = arr.slice(start, end); // start = where to BEGIN (included ) 
+                                   // end = where to STOP (NOT included )
+
+arr.includes(2)  ;
+arr.indexOf(2)     ;
+arr.find(x => x > 2)   ;
+arr.findIndex(x => x > 2);
+
+for (let i = 0; i < arr.length; i++) {}
+
+for (const val of arr) {}     // values
+for (const i in arr) {}       // indexes
+arr.forEach(v => {});
+
+arr.map(x => x*2);
+arr.filter(x => x > 2);
+arr.reducer((acc,x) => acc + x, 0);
+
+arr.sort((a,b) => a - b); // ascending
+
+arr.reverse();
+const unique = [...new Set(arr)]; //Remove duplicates
+
+
+/** STRING */
+const str = 'hello';
+str.length;
+str[0]; // h
+
+str.toUpperCase();
+str.toLowerCase();
+str.trim();
+
+str.slice(1,4); // ell
+str.replace("h", "y"); 
+str.replaceAll("l", "x");
+
+const arr = str.split(""); // ['h','e','l','l','o']
+arr.join("");              // back to string
+
+str.includes("el"); // true
+str.replace(/[^a-z0-9]/g, '');
+
+/** OBJECT */
+const obj = { name: "Maryna", city:'Prague'};
+
+Object.hasOwn(obj, "name"); 
+for (const key in obj) {}
+
+Object.keys(obj)
+Object.values(obj)
+Object.entries(obj)
+
+/** SET */
+const set = new Set([1,2,3]);
+
+set.add(4);
+set.delete(2);
+set.has(3);
+
+[...set];
+
+/** MAP */
+const map = new Map();  // key, value
+
+map.set("a", 1);
+map.get("a");
+map.has("a");
+map.delete("a");
+
+for ( const [key, value] of map) {}
+
+map[x] = (map[x] || 0) + 1;
+
+
 /** 14. Longest Common Prefix*/
 
 var longestCommonPrefix = function(strs) {
