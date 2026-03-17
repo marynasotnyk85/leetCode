@@ -1,5 +1,23 @@
+/** 28. Find the Index of the First Occurrence in a String */
+/** Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+Explanation: "sad" occurs at index 0 and 6. */
+ haystack = "sddbutsad", needle = "sad"
+var strStr = function(haystack, needle) {
+   //return haystack.indexOf(needle);
+   for (let i = 0;  i <= haystack.length - needle.length; i++) {
+      
+    if ( haystack.slice(i, i + needle.length) === needle) {
+        return i;
+       }
+   }
+   return -1;
+};
+
+console.log(strStr(haystack,needle));
+
 /** ARRAY */
-arr = [1,2,3];
+var arr = [1,2,3];
 arr2 = new Array(3).fill(0); //[0,0,0]
 
 arr.push(4); //[1,2,3,4] → add to END
@@ -8,7 +26,8 @@ arr.unshift(0) //[0,1,2,3,4] → add to START
 arr.pop();          // remove LAST
 arr.shift();        // remove FIRST
 
-const res = arr.slice(start, end); // start = where to BEGIN (included ) 
+const res = arr.slice(1,3 );      //  (start, end);
+                                   // start = where to BEGIN (included ) 
                                    // end = where to STOP (NOT included )
 
 arr.includes(2)  ;
@@ -24,7 +43,7 @@ arr.forEach(v => {});
 
 arr.map(x => x*2);
 arr.filter(x => x > 2);
-arr.reducer((acc,x) => acc + x, 0);
+//arr.reducer((acc,x) => acc + x, 0);
 
 arr.sort((a,b) => a - b); // ascending
 
@@ -45,7 +64,7 @@ str.slice(1,4); // ell
 str.replace("h", "y"); 
 str.replaceAll("l", "x");
 
-const arr = str.split(""); // ['h','e','l','l','o']
+//const arr = str.split(""); // ['h','e','l','l','o']
 arr.join("");              // back to string
 
 str.includes("el"); // true
@@ -80,7 +99,7 @@ map.delete("a");
 
 for ( const [key, value] of map) {}
 
-map[x] = (map[x] || 0) + 1;
+//map[x] = (map[x] || 0) + 1;
 
 
 /** 14. Longest Common Prefix*/
