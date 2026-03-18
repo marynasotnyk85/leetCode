@@ -1,7 +1,37 @@
+/** 383. Ransom Note */
+const ransomNote = "aa";
+ const magazine = "ab";
+var canConstruct1 = function(ransomNote, magazine) {
+    for (let i = 0; i < ransomNote.length; i++){
+          if (magazine.includes(ransomNote[i])) {
+            magazine =   magazine.replace(ransomNote[i], '') ;
+          } else {return false}
+    }
+    return true;
+    
+};
+console.log(canConstruct(ransomNote,magazine));
+
+var canConstruct = function(ransomNote, magazine) {
+   const count = {};
+
+   for( const ch of magazine) {
+       count[ch] = ( count[ch] || 0) +1;
+   }
+   for(const ch of ransomNote) {
+    if (!count[ch]) return false;
+    count[ch]--;
+   }
+   return true;
+}
+
 /** 28. Find the Index of the First Occurrence in a String */
 /** Input: haystack = "sadbutsad", needle = "sad"
 Output: 0
-Explanation: "sad" occurs at index 0 and 6. */
+Explanation: "sad" occurs at index 0 and 6. 
+
+for (let i = 0; i <= text.length - pattern.length; i++)
+*/
  haystack = "sddbutsad", needle = "sad"
 var strStr = function(haystack, needle) {
    //return haystack.indexOf(needle);
