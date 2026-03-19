@@ -1,3 +1,47 @@
+
+/** 415. Add Strings */
+ num1 = "11", num2 = "123"  //Output: "134"
+var addStrings = function(num1, num2) {
+    let i = num1.length -1;
+    let j = num2.length -1;
+    let carry = 0;
+    let res = '';
+   // res= (Number(num1)+ Number(num2)).toString();
+   while (i >= 0 || j >= 0 || carry) {
+    let n1 = i >= 0 ? num1[i--] - '0' : 0;
+    let n2 = j >= 0 ? num2[j--] - '0': 0;
+
+    let sum = n1 + n2 + carry;
+    res = (sum % 10) + res;
+    carry = Math.floor(sum / 10);
+  
+   }
+ 
+    return res;
+};
+
+console.log(addStrings(num1, num2));
+
+/**  412. Fizz Buzz*/
+
+var fizzBuzz = function(n) {
+    const res = [];
+
+    for (let i = 1; i <= n; i++) {
+        if (i % 15 === 0) {
+            res.push("FizzBuzz");
+        } else if (i % 3 === 0) {
+            res.push("Fizz");
+        } else if (i % 5 === 0) {
+            res.push("Buzz");
+        } else {
+            res.push(i.toString());
+        }
+    }
+
+    return res;    
+};
+
 /** 387. First Unique Character in a String */
 
 var firstUniqChar = function(s) {
@@ -26,7 +70,7 @@ var canConstruct1 = function(ransomNote, magazine) {
     return true;
     
 };
-console.log(canConstruct(ransomNote,magazine));
+//console.log(canConstruct(ransomNote,magazine));
 
 var canConstruct = function(ransomNote, magazine) {
    const count = {};
@@ -60,7 +104,7 @@ var strStr = function(haystack, needle) {
    return -1;
 };
 
-console.log(strStr(haystack,needle));
+//console.log(strStr(haystack,needle));
 
 /** ARRAY */
 var arr = [1,2,3];
