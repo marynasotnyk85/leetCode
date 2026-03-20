@@ -1,3 +1,55 @@
+/** 704. Binary Search */
+var search = function(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (nums[mid] === target) return mid;
+
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return -1; //not found
+};
+
+/** 35. Search Insert Position*/
+ nums = [1,3,5,6]; target = 7 ;//Output: 2
+
+var searchInsert = function(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (nums[mid] === target) return mid;
+
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return left;
+} 
+
+var searchInsert2 = function(nums, target) {
+    
+    for (let i = 0; i < nums.length; i++){ 
+            if ( nums[i] >= target ) 
+                return i;    
+         }
+         return nums.length;
+};
+
+console.log(searchInsert(nums, target));
 
 /** 415. Add Strings */
  num1 = "11", num2 = "123"  //Output: "134"
@@ -8,19 +60,22 @@ var addStrings = function(num1, num2) {
     let res = '';
    // res= (Number(num1)+ Number(num2)).toString();
    while (i >= 0 || j >= 0 || carry) {
-    let n1 = i >= 0 ? num1[i--] - '0' : 0;
-    let n2 = j >= 0 ? num2[j--] - '0': 0;
+        let digit1 = i >= 0 ? num1[i] - '0' : 0;
+        let digit2 = j >= 0 ? num2[j] - '0' : 0;
 
-    let sum = n1 + n2 + carry;
-    res = (sum % 10) + res;
-    carry = Math.floor(sum / 10);
-  
-   }
- 
-    return res;
+        let sum = digit1 + digit2 + carry;
+
+        result.push(sum % 10);     // current digit
+        carry = Math.floor(sum / 10);
+
+        i--;
+        j--;
+    }
+
+    return result.reverse().join('');
 };
 
-console.log(addStrings(num1, num2));
+//console.log(addStrings(num1, num2));
 
 /**  412. Fizz Buzz*/
 
