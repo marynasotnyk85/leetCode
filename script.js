@@ -1,3 +1,63 @@
+/** 225. Implement Stack using Queues */
+/**
+ * Stack (LIFO)
+push(x) → put element on top
+pop() → remove the top element
+top() → see the top element
+empty() → check if stack is empty
+ * 
+ * Queues (FIFO)
+ */
+class MyStack {
+    constructor() {
+        this.q = [];
+    }
+
+    push(x){
+        this.q.push(x);
+        for (let i=0; i < this.q.length -1; i++){
+            this.q.push(this.q.shift())
+        }
+    }
+
+    pop() {
+        return this.q.shift()
+    }
+
+    top(){
+        return this.q[0];
+    }
+
+    empty(){
+        return this.q.length === 0;
+    }
+}
+
+class MyStack2 {
+    constructor() {
+        this.q = [];
+    }
+
+    push(x) {
+        this.q.push(x);
+        for (let i = 0; i < this.q.length - 1; i++) {
+            this.q.push(this.q.shift());
+        }
+    }
+
+    pop() {
+        return this.q.shift();
+    }
+
+    top() {
+        return this.q[0];
+    }
+
+    empty() {
+        return this.q.length === 0;
+    }
+}
+
 /** 20. Valid Parentheses */
 var isValid = function(s) {
     const stack = [];
