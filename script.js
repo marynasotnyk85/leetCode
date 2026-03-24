@@ -1,3 +1,32 @@
+/** 232. Implement Queue using Stacks */
+var MyQueue3 = function() {
+    this.input = [];
+    this.output = [];
+};
+
+MyQueue3.prototype.push = function(x) {
+    this.input.push(x);    
+};
+
+MyQueue3.prototype.pop = function() {
+    this.peek();
+    return this.output.pop();    
+};
+
+MyQueue3.prototype.peek = function() {
+    if (!this.output.length) {
+        while (this.input.length) {
+            this.output.push(this.input.pop());
+        }
+    }
+
+    return this.output[this.output.length - 1];    
+};
+
+MyQueue3.prototype.empty = function() {
+    return !this.input.length && !this.output.length;    
+};
+
 /** 225. Implement Stack using Queues */
 /**
  * Stack (LIFO)
@@ -7,6 +36,10 @@ top() → see the top element
 empty() → check if stack is empty
  * 
  * Queues (FIFO)
+push(x) → add to the back
+pop() → remove from the front
+peek() → see the front
+empty() → check if empty
  */
 class MyStack {
     constructor() {
