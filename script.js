@@ -1,4 +1,19 @@
 /** 21. Merge Two Sorted Lists */
+/**
+ * 
+ list1 --> [1] -> [2] -> [4] -> null
+
+ list1 = {
+  val: 1,
+  next: {
+    val: 2,
+    next: {
+      val: 4,
+      next: null
+    }
+  }
+}
+ */
 function ListNode(val, next) {
     this.val = (val === undefined ? 0 : val);
     this.next = (next === undefined ? null : next);
