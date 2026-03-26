@@ -1,3 +1,37 @@
+/** 141 Linked List Cycle  - Floyd’s cycle
+ * slow pinter move 1 position, fast pointer move 2 position,
+ * and if it's cycle they always goint to meet ( true cycle)
+ */
+var hasCycle = function(head) {
+    let slow = head;
+    let fast = head;
+
+    while (fast && fast.next) { //if any fast or fast.mext means list has NULL and finish, not cycle
+        fast = fast.next.next;
+        slow = slow.next;
+
+        if (fast === slow){
+            return true;
+        }
+    }
+    return false;
+}
+
+/** 83. Remove Duplicates from Sorted List */
+var deleteDuplicates = function(head) {
+    let current = head;
+
+    while (current && current.next) {
+        if (current.val === current.next.val) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+
+    return head;
+};
+
 /** 21. Merge Two Sorted Lists */
 /**
  * 
