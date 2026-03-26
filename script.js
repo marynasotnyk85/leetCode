@@ -1,3 +1,20 @@
+/** 160. Intersection of Two Linked Lists */
+var getIntersectionNode = function(headA, headB) {
+    let pointerA  = headA;
+    let pointerB  = headB;
+    
+     // continue until both pointers are on the same node
+    while (pointerA  !== pointerB) {
+         // move to next node, or switch to headB if end reached
+        pointerA  = pointerA  ? pointerA.next : headB;
+         // move to next node, or switch to headA if end reached
+        pointerB = pointerB ? pointerB.next : headA;
+    }
+    
+      // either intersection node or null
+    return pointerA;    
+};
+
 /** 141 Linked List Cycle  - Floyd’s cycle
  * slow pinter move 1 position, fast pointer move 2 position,
  * and if it's cycle they always goint to meet ( true cycle)
