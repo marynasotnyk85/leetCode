@@ -1,3 +1,29 @@
+/** 206. Reverse Linked List 
+ * 1 -> 3 -> 4   --->    4 -> 3 -> 1
+*/
+var revertList = function(head) {
+    let node = null;
+
+    while (head) {
+        const temp = head.next; //3
+        head.next = node;  // null <- 1
+        node = head;
+        head = temp;
+    }
+    return node;
+}
+
+var reverseListRecursive = function(head) {
+    if (!head || !head.next) {
+        return head;
+    }
+
+    var newHead = reverseListRecursive(head.next);
+    head.next.next = head;
+    head.next = null;
+    return newHead;    
+};
+
 /**203. Remove Linked List Elements */
 var removeElements = function(head, val) {
     let ans = new ListNode(0, head);
