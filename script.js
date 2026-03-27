@@ -1,3 +1,26 @@
+/** 234. Palindrome Linked List */
+var isPalindrome = function(head) {
+    let arr = [];
+
+    while (head !== null) {
+        arr.push(head.val);
+        head = head.next;
+    }
+
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left < right) {
+        if (arr[left] !== arr[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;    
+};
+
 /** 206. Reverse Linked List 
  * 1 -> 3 -> 4   --->    4 -> 3 -> 1
 */
