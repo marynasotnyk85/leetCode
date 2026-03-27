@@ -1,3 +1,19 @@
+/**203. Remove Linked List Elements */
+var removeElements = function(head, val) {
+    let ans = new ListNode(0, head);
+    let dummy = ans;
+
+    while (dummy) {
+        while (dummy.next && dummy.next.val === val) {
+            dummy.next = dummy.next.next;
+        }
+        dummy = dummy.next;
+    }
+
+    return ans.next;    
+};
+
+
 /** 160. Intersection of Two Linked Lists */
 var getIntersectionNode = function(headA, headB) {
     let pointerA  = headA;
