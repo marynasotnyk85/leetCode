@@ -1,3 +1,15 @@
+/** 111. Minimum Depth of Binary Tree */
+
+var minDepth = function(root){
+  if ( !root ) return 0;
+  
+  if ( root.left === null ) return minDepth(root.right) + 1;
+  if ( root.right === null) return minDepth(root.left) + 1;
+ 
+  return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+}
+
+
 /** 104. Maximum Depth of Binary Tree */
 var maxDepth = function(root){
   if(!root) return 0;
