@@ -1,3 +1,27 @@
+/** 617. Merge Two Binary Trees */
+var mergeTree = function (root1, root2) {
+    if ( !root1 ) return root2;
+    if ( !root2 ) return root1;
+
+    const newNode = new TreeNode(root1.val + root2.val);
+    newNode.left = mergeTree(root1.left , root2.left);
+    newNode.right = mergeTree(root1.right, root2.right);
+
+    return newNode;
+}
+
+/** in place  */
+var mergeTreesInPlace = function(root1, root2) {
+    if (!root1) return root2;
+    if (!root2) return root1;
+
+    root1.val += root2.val;
+    root1.left = mergeTreesInPlace(root1.left, root2.left);
+    root1.right = mergeTreesInPlace(root1.right, root2.right);
+
+    return root1;
+};
+
 /** 226. Invert Binary Tree */
 var invertTree = function(root) {
     if ( root === null) {
