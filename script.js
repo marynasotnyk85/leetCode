@@ -1,4 +1,41 @@
-/** 704. Binary Search 
+
+/**
+ * DFS = Depth-First Search - go down
+ function dfs(node) {
+  if (!node) return;
+  console.log(node.val);
+  dfs(node.left);
+  dfs(node.right);
+}
+  DFS is common for:
+max depth
+min depth
+path sum
+invert tree
+subtree problems
+
+BFS = Breadth-First Search - go across
+function bfs(root) {
+  if (!root) return;
+
+  const queue = [root];
+
+  while (queue.length) {
+    const node = queue.shift();
+    console.log(node.val);
+
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+}
+
+BFS is common for:
+level order traversal
+minimum steps by levels
+shortest path in unweighted graph
+finding depth level by level
+ */
+/** 704. Binary Search  (ARRAY)
  * Input: nums = [-1,0,3,5,9,12], target = 9
  Output: 4
 Explanation: 9 exists in nums and its index is 4
