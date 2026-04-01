@@ -1,3 +1,60 @@
+/** 653. Two Sum IV - Input is a BST */
+var findTarget = function(root, k){
+    const seen = new Set();
+
+    function dfs(node){
+        if(!node) return false;
+
+        if (seen.has(k - node.val)) return true;
+
+        seen.add(node.val);
+
+        return dfs(node.left) || dfs(node.right);
+    }
+    return dfs(root);
+}
+
+function TreeNode(val, left = null, right = null) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+}
+
+const root = new TreeNode(
+    5,
+    new TreeNode(
+        3,
+        new TreeNode(2),
+        new TreeNode(4)
+    ),
+    new TreeNode(
+        6,
+        null,
+        new TreeNode(7)
+    )
+);
+const k = 9;
+console.log(findTarget(root, k));
+
+/** 530. Minimum Absolute Difference in BST */
+var getMinimumDiff = function(root){
+    let prev = null;
+    let minDiff = Infinity;
+
+    function dfs(node) {
+        if (!node) return;
+
+        dfs(node.left);
+        if (prev != null) {
+            minDiff = Math.min(minDiff, node.val - prev);
+        }
+        prev = node.val;
+        dfs(node.right);
+    }
+
+    dfs(root);
+    return minDiff;
+}
 
 /**
  * DFS = Depth-First Search - go down
@@ -547,7 +604,7 @@ var searchInsert2 = function(nums, target) {
          return nums.length;
 };
 
-console.log(searchInsert(nums, target));
+//console.log(searchInsert(nums, target));
 
 /** 415. Add Strings */
  num1 = "11", num2 = "123"  //Output: "134"
@@ -763,7 +820,7 @@ var longestCommonPrefix = function(strs) {
     return prefix;
 };
 strs = ["flower","flow","flight"];
-console.log(longestCommonPrefix(strs));
+//console.log(longestCommonPrefix(strs));
 
 /** 125. Valid Palindrome */
 /** Input: s = "A man, a plan, a canal: Panama"
@@ -790,7 +847,7 @@ console.log(longestCommonPrefix(strs));
 
 };
 s = "A man, a plan, a canal: Panama";
-console.log(isPalindrome(s));
+//console.log(isPalindrome(s));
 
     var containsNealyDuplicates = function(nums, k){
         const window = new Set();
@@ -841,7 +898,7 @@ var reverseVowels = function(s) {
 };
 
 s = "leetcode";
-console.log(reverseVowels(s));
+//console.log(reverseVowels(s));
 
 
 /**  what s = 'hello' as string ->  "hello".split('').reverse().join('')
