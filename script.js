@@ -1,3 +1,20 @@
+/** 746. Min Cost Climbing Stairs */
+//      0  1  2
+cost = [10,15,20];
+
+var minCostClimbingStairs = function(cost) {
+    let one = cost[0]; //10
+    let two = cost[1]; //15
+
+    for (let i = 2; i < cost.length; i++) {
+        let current = cost[i] + Math.min(one, two); //30
+        one = two;
+        two = current;
+    }
+
+    return Math.min(one, two);
+};
+
 /** 70. Climbing Stairs */
 /**
  *    n = 5 ->   ultomi 2 posizioni sempre 1 1 , 3' ultima = somma di due precedenti ecc
