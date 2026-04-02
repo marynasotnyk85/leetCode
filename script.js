@@ -1,3 +1,60 @@
+/** 70. Climbing Stairs */
+/**
+ *    n = 5 ->   ultomi 2 posizioni sempre 1 1 , 3' ultima = somma di due precedenti ecc
+ * 
+ *   0 1 2 3 4 5   //steps
+ *   8 5 3 2 1 1   
+ */
+var climbStairs = function(n){
+    if ( n <= 2) return n;
+
+    let one = 1;
+    let two = 1;
+
+    for ( let i = 3; i < n; i++){
+        let temp = one;
+        one = one + two;
+        two = temp;
+    }
+    return one;
+}
+console.log(climbStairs(5));
+
+/** 303. Range Sum Query - Immutable */
+//      0   1  2  3   4   5
+nums = [-2, 0, 3, -5, 2, -1]
+// add 0 ->  0, [-2, 0, 3, -5, 2, -1]
+prefix = [0, -2, -2, 1, -4, -2, -3]
+/** 
+prefix[0] = 0
+prefix[1] = -2
+prefix[2] = -2
+prefix[3] = 1
+prefix[4] = -4
+prefix[5] = -2
+prefix[6] = -3 
+
+sumRange(0, 2) ----> prefix[3] - prefix[0] = 1 - 0 = 1  // prefix[right + 1] - prefix[left]
+*/
+
+
+var NumArray = function(nums) {
+    // prefix[i] will store the sum of elements from nums[0] to nums[i - 1]
+    this.prefix = new Array(nums.length + 1).fill(0);
+
+    for (let i = 0; i < nums.length; i++) {
+        // current prefix sum = previous prefix sum + current number
+        this.prefix[i+1]= this.prefix[i] + nums[i];
+    } 
+};
+
+NumArray.prototype.sumRange = function(left, right) {
+     return this.prefix[right + 1] - this.prefix[left];
+}
+
+const obj1 = new NumArray([-2, 0, 3, -5, 2, -1]);
+console.log(obj1.sumRange(0, 2));
+
 /** 733. Flood Fill */
 var floodFill = function(image, sr, sc, color) {
     const old = image[sr][sc];
