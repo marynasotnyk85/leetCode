@@ -1,16 +1,31 @@
 /** 136. Single Number 
  * Input: nums = [4,1,2,1,2]
    Output: 4
+   binary XOR ^ ->  1^1 = 0 ; 0^0 = 0 ; 1^0 = 1; 0^1 = 1
+   a ^ a = 0; a ^ 0 = a
 */
 var singleNumber = function(nums) {
-    let res = 0;
+    let res = 0; // n^0 = n
 
     for (let n of nums) {
-        res ^= n;
+        res ^= n; // res = n ^ res ; 
     }
 
     return res;    
 };
+
+var singleNumberMao = function(nums) {
+    const map = new Map();
+
+    for( let n of nums) {
+        map.set(n, (map.get(n) || 0) + 1)
+    }
+
+    for (let [key,value] of map) {
+        if (value === 1 )
+            return key;
+    }
+}
 
 /** 191. Number of 1 Bits */
 /** >>   signed shift, keeps sign
