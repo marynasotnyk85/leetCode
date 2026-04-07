@@ -1,3 +1,30 @@
+/** 136. Single Number 
+ * Input: nums = [4,1,2,1,2]
+   Output: 4
+*/
+var singleNumber = function(nums) {
+    let res = 0;
+
+    for (let n of nums) {
+        res ^= n;
+    }
+
+    return res;    
+};
+
+/** 191. Number of 1 Bits */
+/** >>   signed shift, keeps sign
+    >>>  unsigned shift, fills with 0 */
+var hammingWeight = function(n) {
+      let count = 0;
+
+    for (let i = 0; i < 32; i++) {
+        count += (n >> i) & 1;
+    }
+
+    return count;
+};
+
 /** 746. Min Cost Climbing Stairs */
 //      0  1  2
 cost = [10,15,20];
